@@ -22,3 +22,20 @@ Las principales ventajas de PlayWright comparado con Puppeteer son las siguiente
 
 Se espera que Playwright sea lanzado oficialmente (V1.0 stable) en algún momento de 2020. Mientras tanto, se puede ver el estado del desarrollo [aquí](https://aslushnikov.github.io/isplaywrightready/).
 
+
+## E2E testing comparison table
+
+|                                 | Cypress                        | Protractor               | Puppeteer           | PlayWright                                                  |
+|---------------------------------|--------------------------------|--------------------------|---------------------|-------------------------------------------------------------|
+| Interfaz gráfica                | Sí                             | No                       | No                  | No                                                          |
+| Generador de configuración      | Sí                             | Sí (Con angular CLI)     | No                  | No                                                          |
+| Locators para Angular           | No                             | Sí                       | No                  | No                                                          |
+| Integración con Test frameworks | No, interno (sintaxis jasmine) | Jasmine, Mocha, Cucumber | Principalment todos | chai, mocha, jasmine, jest, cucumber (principalmente todos) |
+| Sistemas operativos             | Mac, Linux                     | Mac, Linux, Windows      | Mac, Linux, Windows | Mac, Linux, Windows                                         |
+| Grabación de pruebas            | Sí                             | No                       | No                  | No                                                          |
+| Selenium backend                | No                             | Sí                       | No                  | No                                                          |
+| Time-traveling                  | Sí                             | No                       | No                  | No                                                          |
+| Headless testing                | No                             | Sí                       | Sí                  | Sí                                                          |
+|                                 |                                |                          |                     |                                                             |
+|                                 |                                |                          |                     |                                                             |
+
