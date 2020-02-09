@@ -1,4 +1,4 @@
-const timeout = 60000;
+const timeout = 90000;
 
 beforeAll(async () => {
     await page.goto(URL, {waitUntil: 'networkidle0'});
@@ -10,6 +10,24 @@ describe('Angular form basic', () => {
         const html = await page.evaluate(h2Handle => h2Handle.innerHTML, h2Handle);
 
         expect(html).toBe("Register");
+    }, timeout);
+});
+
+describe('Angular form happy path', () => {
+    test('Happy path', async() => {
+        const page = await browser.newPage();
+        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3419.0 Safari/537.36');
+        await page.goto(URL, {waitUntil: 'networkidle0'});
+
+        // Fills form up with short password (< 6 characters)
+        await page.type('input[formcontrolname="firstName"]', 'fake firstname', {delay: 100});
+        await page.type('input[formcontrolname="lastName"]', 'fake lastname', {delay: 100});
+        await page.type('input[formcontrolname="username"]', 'fake username', {delay: 100});
+        await page.type('input[formcontrolname="password"]', 'longpassword', {delay: 100});
+
+        await page.click('.btn.btn-primary');
+
+        await expect(page).toMatch('Registration successful', {timeout: 10000});
     }, timeout);
 });
 
