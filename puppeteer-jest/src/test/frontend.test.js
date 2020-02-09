@@ -1,8 +1,7 @@
-const timeout = 30000;
+const timeout = 60000;
 
 beforeAll(async () => {
-    await page.goto(URL, {waitUntil: 'domcontentloaded'});
-    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3419.0 Safari/537.36');
+    await page.goto(URL, {waitUntil: 'networkidle0'});
 });
 
 describe('Angular form basic', () => {
@@ -16,6 +15,10 @@ describe('Angular form basic', () => {
 
 describe('Angular form wrong data', () => {
     test('Short Password', async () => {
+        const page = await browser.newPage();
+        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3419.0 Safari/537.36');
+        await page.goto(URL, {waitUntil: 'networkidle0'});
+
         // Fills form up with short password (< 6 characters)
         await page.type('input[formcontrolname="firstName"]', 'fake firstname', {delay: 100});
         await page.type('input[formcontrolname="lastName"]', 'fake lastname', {delay: 100});
@@ -30,7 +33,12 @@ describe('Angular form wrong data', () => {
 
 describe('Angular form incomplete data', () => {
     test('No firstname', async () => {
+        const page = await browser.newPage();
+        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3419.0 Safari/537.36');
+        await page.goto(URL, {waitUntil: 'networkidle0'});
+
         // Fills form up with no first name
+        await page.type('input[formcontrolname="firstName"]', '', {delay: 0});
         await page.type('input[formcontrolname="lastName"]', 'fake lastname', {delay: 100});
         await page.type('input[formcontrolname="username"]', 'fake username', {delay: 100});
         await page.type('input[formcontrolname="password"]', 'longpassword', {delay: 100});
@@ -41,8 +49,13 @@ describe('Angular form incomplete data', () => {
     }, timeout);
 
     test('No lastname', async () => {
+        const page = await browser.newPage();
+        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3419.0 Safari/537.36');
+        await page.goto(URL, {waitUntil: 'networkidle0'});
+
         // Fills form up with no first name
         await page.type('input[formcontrolname="firstName"]', 'fake firstname', {delay: 100});
+        await page.type('input[formcontrolname="lastName"]', '', {delay: 100});
         await page.type('input[formcontrolname="username"]', 'fake username', {delay: 100});
         await page.type('input[formcontrolname="password"]', 'longpassword', {delay: 100});
 
@@ -52,9 +65,14 @@ describe('Angular form incomplete data', () => {
     }, timeout);
 
     test('No username', async () => {
+        const page = await browser.newPage();
+        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3419.0 Safari/537.36');
+        await page.goto(URL, {waitUntil: 'networkidle0'});
+
         // Fills form up with no first name
         await page.type('input[formcontrolname="firstName"]', 'fake firstname', {delay: 100});
         await page.type('input[formcontrolname="lastName"]', 'fake lastname', {delay: 100});
+        await page.type('input[formcontrolname="username"]', '', {delay: 100});
         await page.type('input[formcontrolname="password"]', 'longpassword', {delay: 100});
 
         await page.click('.btn.btn-primary');
@@ -63,10 +81,15 @@ describe('Angular form incomplete data', () => {
     }, timeout);
 
     test('No password', async () => {
+        const page = await browser.newPage();
+        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3419.0 Safari/537.36');
+        await page.goto(URL, {waitUntil: 'networkidle0'});
+
         // Fills form up with no first name
         await page.type('input[formcontrolname="firstName"]', 'fake firstname', {delay: 100});
         await page.type('input[formcontrolname="lastName"]', 'fake lastname', {delay: 100});
         await page.type('input[formcontrolname="username"]', 'fake username', {delay: 100});
+        await page.type('input[formcontrolname="password"]', '', {delay: 100});
 
         await page.click('.btn.btn-primary');
 
