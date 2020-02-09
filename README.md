@@ -5,7 +5,7 @@
 - Juan Sebastián Mendez
 - Juan José Villegas
 
-4. PlayWright vs Puppeteer
+## PlayWright vs Puppeteer
 
 PlayWright es una herramienta de código abierto escrita en Node.js. Fue creada por Microsoft para automatizar pruebas en browsers basados en Chromium, Firefox, y Webit a través de una API.
 
