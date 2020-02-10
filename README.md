@@ -36,6 +36,10 @@ Se espera que Playwright sea lanzado oficialmente (V1.0 stable) en algún moment
 | Selenium backend                | No                             | Sí                       | No                  | No                                                          |
 | Time-traveling                  | Sí                             | No                       | No                  | No                                                          |
 | Headless testing                | No                             | Sí                       | Sí                  | Sí                                                          |
-|                                 |                                |                          |                     |                                                             |
-|                                 |                                |                          |                     |                                                             |
 
+
+## VIDEO Comparando herramientas
+
+A continuación está el link del video donde se muestra el trabajo realizado y se comparan las herramientas vistas:
+
+[Video](https://youtu.be/Ntq8I1xXvkI)
